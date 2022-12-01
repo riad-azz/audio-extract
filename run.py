@@ -16,7 +16,6 @@ def check_filepath(path: str):
 def check_savepath(path: str):
     if path == './':
         return
-    print(path)
     if not os.path.isdir(path):
         raise Exception("Make sure your save path is correct (It shouldn't contain a filename)")
     if not os.path.isdir(path):
