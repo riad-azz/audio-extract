@@ -1,0 +1,61 @@
+# Video to MP3
+
+Extract full audio from videos or use timestamps to get only a part of the full audio.
+
+
+## Getting Started
+
+### Dependencies
+
+* [Moviepy](https://pypi.org/project/moviepy/) a library to manipulate videos/audios.
+
+### Installing
+
+```
+git clone https://github.com/riad-azz/video_to_mp3.git
+```
+
+```
+cd video_to_mp3
+```
+
+```
+pip install -r requirements.txt
+```
+
+### Executing program from the command line
+
+* Extract the full audio
+```python
+python run.py --path='(FILEDIR)/video.mp4' --save-path='./' --filename='audio.mp3'
+```
+_this will save the full audio in the same folder as audio.mp3_
+
+_save-path and filename arguments are optional (Do not include the file name in the save-path argument)_
+
+* Extract a part of the audio
+```python
+python run.py --path='(FILEDIR)/video.mp4' --save-path='./' --filename='audio.mp3' --start=0 --end=11
+```
+_this will save the audio (from second 0 to second 11) in the same folder as audio.mp3_
+
+_both start and end arguments are required in this case (Make sure start timestamp is less than the end timestamp)_
+
+### Executing program from another script
+
+You can simply copy the video_to_mp3.py to your project folder and import the function
+
+* Example
+```python
+from video_to_mp3 import extract_audio
+
+filepath = './video.mp4'
+savepath = './audio.mp'
+full_audio = False
+timestamps = (0, 11)
+
+extract_audio(filepath=filepath,
+              savepath=savepath,
+              full_audio=full_audio,
+              timestamps=timestamps)
+```
