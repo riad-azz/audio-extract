@@ -7,7 +7,9 @@ Extract full audio from videos or use timestamps to get only a part of the full 
 
 ### Dependencies
 
-* [Moviepy](https://pypi.org/project/moviepy/) a library to manipulate videos/audios.
+* Latest version of [Python](https://www.python.org/downloads/) (This project was built with Python 3.11.0).
+
+* [Moviepy](https://pypi.org/project/moviepy/) Library, which is used to manipulate videos/audios.
 
 ### Installing
 
