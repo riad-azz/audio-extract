@@ -49,10 +49,10 @@ You can simply copy the video_to_mp3.py to your project folder and import the fu
 ```python
 from video_to_mp3 import extract_audio
 
-filepath = './video.mp4'
-savepath = './audio.mp'
-full_audio = False
-timestamps = (0, 11)
+filepath = './video.mp4' # Must include video file name in this case
+savepath = './audio.mp3' # Must include the name you want for the mp3 file in this case
+full_audio = False # Optional, the default is set to True
+timestamps = (0, 11) # Required only if full_audio is set to False
 
 extract_audio(filepath=filepath,
               savepath=savepath,
