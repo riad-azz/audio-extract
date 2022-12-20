@@ -41,7 +41,13 @@ python run.py --path='(FILEDIR)/video.mp4' --save-path='./' --filename='audio.mp
 ```
 _this will save the audio (from second 0 to second 11) in the same folder as audio.mp3_
 
-_both start and end arguments are required in this case (Make sure start timestamp is less than the end timestamp)_
+_Note : Make sure start timestamp is less than the end timestamp if you include both_
+
+* You can also include only one argument (--start or --end)
+```python
+python run.py --path='(FILEDIR)/video.mp4' --save-path='./' --filename='audio.mp3' --start=4
+```
+_this will save the audio (from second 4 to the end of the video duration) in the same folder as audio.mp3_
 
 ### Executing program from another script
 

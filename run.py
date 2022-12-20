@@ -35,13 +35,12 @@ def get_filename(filename: str, filepath: str) -> str:
 
 
 def is_full_audio(start, end):
-    if start is None or end is None:
-        return True
+    if start or end:
+        if type(start) is not float or type(end) is not float:
+            raise TypeError("Make sure start and end time are float numbers")
+        return False
 
-    if type(start) is not float or type(end) is not float:
-        raise TypeError("Make sure start and end time are float numbers")
-
-    return False
+    return True
 
 
 def main():
