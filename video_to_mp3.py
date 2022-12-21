@@ -1,7 +1,8 @@
 from moviepy.editor import VideoFileClip
 
 
-def extract_audio(filepath, savepath="./new.mp3", full_audio=True, timestamps: tuple[float, float] = (0.0, 0.0)):
+def extract_audio(filepath, savepath="./new.mp3", full_audio=True,
+                  timestamps: tuple[float | None, float | None] = (0.0, 0.0)):
     if full_audio:
         try:
             video_file = VideoFileClip(filepath)

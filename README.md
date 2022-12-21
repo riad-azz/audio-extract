@@ -60,10 +60,14 @@ from video_to_mp3 import extract_audio
 filepath = './video.mp4' # Must include video file name in this case
 savepath = './audio.mp3' # Must include the name you want for the mp3 file in this case
 full_audio = False # Optional, the default is set to True
+# You can have one side as None in the timestamps which will mean
+# that the script will finish to the end or from the start
+# if you put (None, 10) the script will cut the audio from the start to the second 10
+# if both are (None, None) you will just get the full audio
 timestamps = (0, 11) # Required only if full_audio is set to False
 
 extract_audio(filepath=filepath,
               savepath=savepath,
               full_audio=full_audio,
-              timestamps=timestamps)
+              timestamps=timestamps) 
 ```
