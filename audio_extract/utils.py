@@ -1,12 +1,16 @@
+import os
 import mutagen
+from colorama import Fore, Style
+
+os.system("color")
 
 
 def print_success(text: str):
-    print("\033[32m" + "✅  " + f"{text}" + "\033[0m")
+    print(f"{Fore.LIGHTGREEN_EX}{text}{Style.RESET_ALL}")
 
 
 def print_error(text: str):
-    print("\033[31m" + "❌  " + f"{text}" + "\033[0m")
+    print(f"{Fore.LIGHTRED_EX}{text}{Style.RESET_ALL}")
 
 
 def media_duration(path: str):

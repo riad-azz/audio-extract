@@ -27,7 +27,7 @@ def run(input_path: str, output_path: str = "./audio.mp3", start_time: str = "00
     output_path = os.path.abspath(output_path)
 
     if not os.path.exists(input_path):
-        utils.print_error(f"{input_path} does not exist")
+        utils.print_error(f"Failed : {input_path} does not exist")
         return False
 
     print(f"Processing audio for {input_path} please wait...")
@@ -44,5 +44,5 @@ def run(input_path: str, output_path: str = "./audio.mp3", start_time: str = "00
         if isinstance(e, AudioExtractException):
             utils.print_error(e.message)
         else:
-            utils.print_error(f"Something went wrong, {e}")
+            utils.print_error(f"Failed : Something went wrong, {e}")
         return False

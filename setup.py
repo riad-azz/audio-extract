@@ -33,6 +33,7 @@ class AddToPathCommand(Command):
 
 
 requires = [
+    "colorama>=0.4.6",
     "ffmpeg>=1.4",
     "imageio-ffmpeg>=0.4.8",
     "mutagen>=1.46.0",
@@ -44,7 +45,7 @@ long_description_content_type = 'text/markdown'
 
 setup(
     name='audio_extract',
-    version='0.3.0',
+    version='0.3.1',
     author='riad-azz',
     author_email='riadh.azzoun@hotmail.com',
     description='Extract and trim audio from videos or trim audios.',
