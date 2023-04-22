@@ -2,11 +2,11 @@ import mutagen
 
 
 def print_success(text: str):
-    print("\033[32m" + f"✅  {text}" + "\033[0m")
+    print("\033[32m" + f"✅ {text}" + "\033[0m")
 
 
 def print_error(text: str):
-    print("\033[31m" + f"❌  {text}" + "\033[0m")
+    print("\033[31m" + f"❌ {text}" + "\033[0m")
 
 
 def media_duration(path: str):

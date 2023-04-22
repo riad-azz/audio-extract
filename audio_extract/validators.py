@@ -2,6 +2,7 @@ import os
 import re
 import magic
 from audio_extract import utils
+from audio_extract.exceptions import AudioExtractException
 
 
 def is_valid_hms(time: str) -> bool:
@@ -17,67 +18,52 @@ def is_valid_hms(time: str) -> bool:
 
 def extract_full_audio_validation(path: str, start_time: str) -> bool:
     if not os.path.exists(path):
-        utils.print_error(f"{path} was not found.")
-        return False
+        raise AudioExtractException(f"{path} was not found.")
 
     valid_media = ('video/mp4', 'audio/mpeg')
-    if not magic.from_file(path, mime=True) in valid_media:
-        utils.print_error(f"Invalid input file, doesn't match video/audio media.")
-        return False
+    type_check = magic.from_file(path, mime=True)
+    if type_check not in valid_media:
+        raise AudioExtractException(f"Invalid input file, {type_check} doesn't match video/audio media.")
 
     if not is_valid_hms(start_time):
-        utils.print_error(f"Invalid start time format, valid formats are \"HH:MM:SS\" or \"MM:SS\".")
-        return False
+        raise AudioExtractException(f"Invalid start time format, valid formats are \"HH:MM:SS\" or \"MM:SS\".")
 
     media_duration = utils.media_duration(path)
     formatted_media_duration = utils.seconds_to_hms(media_duration)
 
     start_time_seconds = utils.hms_to_seconds(start_time)
-    if start_time_seconds is None:
-        return False
     if start_time_seconds > media_duration:
-        utils.print_error(
+        raise AudioExtractException(
             f"Start time can't be bigger than input file duration \"{formatted_media_duration}\".")
-        return False
 
     return True
 
 
 def extract_sub_audio_validation(path: str, start_time: str, duration: str) -> bool:
     if not os.path.exists(path):
-        utils.print_error(f"{path} was not found.")
-        return False
+        raise AudioExtractException(f"{path} was not found.")
 
-    valid_media = ('video/mp4', 'audio/mpeg')
-    if not magic.from_file(path, mime=True) in valid_media:
-        utils.print_error(f"Invalid input file, doesn't match video/audio media.")
-        return False
+    type_check = magic.from_file(path, mime=True)
+    if 'audio' not in type_check and 'video' not in type_check:
+        raise AudioExtractException(f"Invalid input file, {type_check} doesn't match video/audio media.")
 
     if not is_valid_hms(start_time):
-        utils.print_error(f"Invalid start time format, valid formats are \"HH:MM:SS\" or \"MM:SS\".")
-        return False
+        raise AudioExtractException(f"Invalid start time format, valid formats are \"HH:MM:SS\" or \"MM:SS\".")
 
     if not is_valid_hms(duration):
-        utils.print_error(f"Invalid duration format, valid formats are \"HH:MM:SS\" or \"MM:SS\".")
-        return False
+        raise AudioExtractException(f"Invalid duration format, valid formats are \"HH:MM:SS\" or \"MM:SS\".")
 
     file_duration_seconds = utils.media_duration(path)
     formatted_media_duration = utils.seconds_to_hms(file_duration_seconds)
 
     start_time_seconds = utils.hms_to_seconds(start_time)
-    if start_time_seconds is None:
-        return False
     if start_time_seconds > file_duration_seconds:
-        utils.print_error(
+        raise AudioExtractException(
             f"Start time can't be bigger than input file duration \"{formatted_media_duration}\".")
-        return False
 
     duration_seconds = utils.hms_to_seconds(duration)
-    if duration_seconds is None:
-        return False
     if duration_seconds > (file_duration_seconds - start_time_seconds):
-        utils.print_error(
+        raise AudioExtractException(
             f"Invalid duration, new duration can't exceed file duration.")
-        return False
 
     return True

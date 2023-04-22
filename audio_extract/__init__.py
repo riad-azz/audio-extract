@@ -5,6 +5,7 @@ import os
 from audio_extract import utils
 from audio_extract import validators
 from audio_extract import ffmpeg_tools
+from audio_extract.exceptions import AudioExtractException
 
 
 def extract_full_audio(input_path: str, output_path: str, start_time: str):
@@ -33,6 +34,9 @@ def run(input_path: str, output_path: str = "./audio.mp3", start_time: str = "00
             return extract_full_audio(input_path, output_path, start_time)
         else:
             return extract_sub_audio(input_path, output_path, start_time, duration)
-    except:
-        utils.print_error("Something went wrong...")
+    except Exception as e:
+        if isinstance(e, AudioExtractException):
+            utils.print_error(e.message)
+        else:
+            utils.print_error(f"Something went wrong, {e}")
         return False
