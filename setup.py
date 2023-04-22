@@ -1,5 +1,5 @@
 try:
-    from setuptools import find_packages, setup
+    from setuptools import find_packages, setup, Command
 except ImportError:
     raise ImportError(
         "Audio Extract could not be installed, probably because "
@@ -7,6 +7,30 @@ except ImportError:
         "Install setuptools with $ pip install setuptools"
         "try again."
     )
+
+
+class AddToPathCommand(Command):
+    """
+    Custom command to add package to system's PATH during installation.
+    """
+    description = 'Add package to system PATH'
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        # Add package directory to PATH
+        import sys
+        from pathlib import Path
+
+        package_dir = Path(__file__).resolve().parent
+        if str(package_dir) not in sys.path:
+            sys.path.insert(0, str(package_dir))
+
 
 requires = [
     "ffmpeg>=1.4",
@@ -20,7 +44,7 @@ long_description_content_type = 'text/markdown'
 
 setup(
     name='audio_extract',
-    version='0.1.0',
+    version='0.2.0',
     author='riad-azz',
     author_email='riadh.azzoun@hotmail.com',
     description='Extract and trim audio from videos or trim audios.',
@@ -34,6 +58,14 @@ setup(
     install_requires=requires,
     license="MIT License",
     keywords=["convert video", "audio", "ffmpeg", "video to mp3"],
+    entry_points={
+        'console_scripts': [
+            'extract-audio=audio_extract.execute:main',
+        ],
+    },
+    cmdclass={
+        'add_to_path': AddToPathCommand,
+    },
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",

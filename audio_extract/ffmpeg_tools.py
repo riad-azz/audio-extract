@@ -1,11 +1,25 @@
+# Other modules
+import os
 import subprocess
 import imageio_ffmpeg
+
+# Local modules
 from audio_extract import utils
 
 FFMPEG_BINARY = imageio_ffmpeg.get_ffmpeg_exe()
 
 
+def create_output_folder(filepath: str):
+    folder_path = "\\".join(filepath.split('\\')[:-1])
+
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+
+
 def extract_full_audio(path: str, output: str, start_time: str):
+    # Create output directory if it doesn't exist
+    create_output_folder(output)
+
     result = subprocess.run(
         [FFMPEG_BINARY,
          '-i', path,
@@ -24,6 +38,9 @@ def extract_full_audio(path: str, output: str, start_time: str):
 
 
 def extract_sub_audio(path: str, output: str, start_time: str, duration: str):
+    # Create output directory if it doesn't exist
+    create_output_folder(output)
+
     result = subprocess.run(
         [FFMPEG_BINARY,
          '-i', path,

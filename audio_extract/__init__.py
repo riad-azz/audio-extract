@@ -26,6 +26,12 @@ def run(input_path: str, output_path: str = "./audio.mp3", start_time: str = "00
     input_path = os.path.abspath(input_path)
     output_path = os.path.abspath(output_path)
 
+    if not os.path.exists(input_path):
+        utils.print_error(f"{input_path} does not exist")
+        return False
+
+    print(f"Processing audio for {input_path} please wait...")
+
     if not output_path.endswith(".mp3"):
         output_path += ".mp3"
 
