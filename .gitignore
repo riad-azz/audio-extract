@@ -1,3 +1,6 @@
 .idea
 .idea/*
 venv
+dist
+build
+audio_extract.egg-info

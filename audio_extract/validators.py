@@ -1,6 +1,6 @@
 import os
 import re
-import magic
+import py_file_type as magic
 from audio_extract import utils
 from audio_extract.exceptions import AudioExtractException
 
