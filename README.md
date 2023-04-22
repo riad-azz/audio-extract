@@ -1,4 +1,4 @@
-# Video to MP3
+# Python Audio Extract
 
 Extract audio from videos or trim audio/videos audio
 
@@ -7,11 +7,11 @@ Extract audio from videos or trim audio/videos audio
 ### Installing
 
 ```
-git clone https://github.com/riad-azz/video-to-mp3.git
+git clone https://github.com/riad-azz/py-audio-extract.git
 ```
 
 ```
-cd video-to-mp3
+cd py-audio-extract
 ```
 
 ```
