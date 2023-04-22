@@ -84,7 +84,7 @@ The duration of the output in `HH:MM:SS` or `MM:SS` format.
 ### Extract full audio
 
 ```bash
-extract-audio --input video.mp4 --output audio.mp3
+audio-extract --input video.mp4 --output audio.mp3
 ```
 
 This command will create a mp3 file called `audio.mp3` that contains the full audio of the video file `video.mp4`.
@@ -92,7 +92,7 @@ This command will create a mp3 file called `audio.mp3` that contains the full au
 #### Extract sub clip audio
 
 ```bash
-extract-audio --input video.mp4 --output audio.mp3 --start 00:00:30
+audio-extract --input video.mp4 --output audio.mp3 --start 00:00:30
 ```
 
 This would create a mp3 file called `audio.mp3` that starts after the first 30 seconds of the video file `video.mp4`.
@@ -100,7 +100,7 @@ This would create a mp3 file called `audio.mp3` that starts after the first 30 s
 #### Extract sub clip audio with custom duration
 
 ```bash
-extract-audio --input video.mp4 --output audio.mp3 --start '00:25' --duration '01:15'
+audio-extract --input video.mp4 --output audio.mp3 --start '00:25' --duration '01:15'
 ```
 
 This command will convert video file `video.mp4` to a mp3 file starting from `00:25` to `01:15`
@@ -109,7 +109,7 @@ called `audio.mp3` that will have a duration of `00:50`.
 #### Trim audio
 
 ```bash
-extract-audio --input audio.mp3 --output new_audio.mp3 --start '00:05' --duration '01:15'
+audio-extract --input audio.mp3 --output new_audio.mp3 --start '00:05' --duration '01:15'
 ```
 
 This command trim the audio starting from `00:05` to `01:15` of the file `audio.mp3` to a mp3 file

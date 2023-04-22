@@ -44,15 +44,15 @@ long_description_content_type = 'text/markdown'
 
 setup(
     name='audio_extract',
-    version='0.2.0',
+    version='0.3.0',
     author='riad-azz',
     author_email='riadh.azzoun@hotmail.com',
     description='Extract and trim audio from videos or trim audios.',
     long_description=long_description,
     long_description_content_type=long_description_content_type,
-    url='https://github.com/riad-azz/py-audio-extract',
+    url='https://github.com/riad-azz/audio-extract',
     project_urls={
-        "Source": "https://github.com/riad-azz/py-audio-extract",
+        "Source": "https://github.com/riad-azz/audio-extract",
     },
     packages=find_packages(exclude=["docs", "tests"]),
     install_requires=requires,
@@ -60,7 +60,7 @@ setup(
     keywords=["convert video", "audio", "ffmpeg", "video to mp3"],
     entry_points={
         'console_scripts': [
-            'extract-audio=audio_extract.execute:main',
+            'audio-extract=audio_extract.execute:main',
         ],
     },
     cmdclass={
