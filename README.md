@@ -1,13 +1,13 @@
 # Audio Extract
 
-Extract and trim audio from videos or trim audios.
+audio-extract is a Python library that allows you to extract audio from video files and trim the audio according to your
+needs
 
 ## Description
 
-Audio Extract allows you to extract audio from video files and trim the audio according to your needs.
-It supports various video and audio formats and has a simple and user-friendly interface.
-
-It can also be used to trim audios.
+audio-extract is a Python library that allows you to extract audio from video files and trim the audio according to your
+needs. You can use it to create audio clips from movies, podcasts, or any other video source. It supports various audio
+and video formats, such as MP3, WAV, OGG, MP4, AVI, and MKV.
 
 ## Installing
 
@@ -114,7 +114,6 @@ audio-extract --input audio.mp3 --output new_audio.mp3 --start '00:05' --duratio
 
 This command trim the audio starting from `00:05` to `01:15` of the file `audio.mp3` to a mp3 file
 called `new_audio.mp3` that will have a duration of `01:10`.
-
 
 ## Authors
 
