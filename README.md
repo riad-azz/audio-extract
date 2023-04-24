@@ -20,7 +20,7 @@ pip install audio-extract
 #### Extract full audio
 
 ```python
-import audio_extract as audio_extract
+import audio_extract
 
 audio_extract.run(input_path="./video.mp4", output_path="./audio.mp3")
 ```
@@ -30,7 +30,7 @@ This will create a mp3 file called `audio.mp3` that contains the full audio of t
 #### Extract sub clip audio
 
 ```python
-import audio_extract as audio_extract
+import audio_extract
 
 audio_extract.run(input_path="./video.mp4", output_path="./audio.mp3", start_time="00:30")
 ```
