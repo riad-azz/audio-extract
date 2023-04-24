@@ -45,7 +45,7 @@ long_description_content_type = 'text/markdown'
 
 setup(
     name='audio_extract',
-    version='0.3.1',
+    version='0.3.2',
     author='riad-azz',
     author_email='riadh.azzoun@hotmail.com',
     description='Extract and trim audio from videos or trim audios.',
