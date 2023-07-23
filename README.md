@@ -113,16 +113,17 @@ The following cli arguments are supported:
 * **`--overwrite`** or **`-ow`** : Whether to overwrite the output file if it already exists or not. The default value
   is `False`.
 
-- CLI usage example:
+### CLI usage example:
+
+Here is an example of using the CLI to extract audio:
 
 ```bash
-audio-extract --input="./video.mp4" --output="./audios/extracted_audio.wav" --format="wav" --start-time="00:05" --duration=15.0
+audio-extract --input="./video.mp4" --output="./audios/extracted_audio.wav" --format="wav"
 ```
 
-This command will extract the audio starting from `00:05` to `00:20` of the file `video.mp4` to a `wav` file
-called `extracted_audio.wav` that will have a duration of `00:15` and will be saved to the folder `./audios/`. The
-folder
-will be automatically created if it doesn't exist.
+This command will extract the full audio starting from `video.mp4` to a `wav` file called `extracted_audio.wav` that
+will have a duration of `00:15` and will be saved to the folder `./audios/`. The folder will be automatically created if
+it doesn't exist.
 
 ## Authors
 
