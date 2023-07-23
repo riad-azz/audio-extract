@@ -50,7 +50,7 @@ The supported file formats:
 
 ### Executing the program
 
-- Extract full audio:
+#### Extract full audio:
 
 ```python
 from audio_extract import extract_audio
@@ -60,7 +60,7 @@ extract_audio(input_path="./video.mp4", output_path="./audio.mp3")
 
 This will create a `mp3` file called `audio.mp3` that contains the full audio of the video file `video.mp4`.
 
-- Extract sub clip audio:
+#### Extract sub clip audio:
 
 ```python
 from audio_extract import extract_audio
@@ -70,7 +70,7 @@ extract_audio(input_path="./video.mp4", output_path="./audio.mp3", start_time="0
 
 This will create a `mp3` file called `audio.mp3` that starts after the first 30 seconds of the video file `video.mp4`.
 
-- Extract sub clip audio with custom duration
+#### Extract sub clip audio with custom duration
 
 ```python
 from audio_extract import extract_audio
@@ -81,7 +81,7 @@ extract_audio(input_path="./video.mp4", output_path="./audio.mp3", start_time="0
 This will convert video file `video.mp4` to a mp3 file starting from `00:25` to `00:40`
 called `audio.mp3` that will have a duration of `00:15`.
 
-- Trim audio:
+#### Trim audio:
 
 ```python
 from audio_extract import extract_audio
