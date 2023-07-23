@@ -65,17 +65,24 @@ This will create a `mp3` file called `audio.mp3` that contains the full audio of
 ```python
 from audio_extract import extract_audio
 
-extract_audio(input_path="./video.mp4", output_path="./audio.mp3", start_time="00:30")
+extract_audio(input_path="./video.mp4",
+              output_path="./audio.mp3",
+              start_time="00:30",
+              overwrite=True)
 ```
 
-This will create a `mp3` file called `audio.mp3` that starts after the first 30 seconds of the video file `video.mp4`.
+This will create a `mp3` file called `audio.mp3` that starts after the first 30 seconds of the video file `video.mp4`
+and will overwrite `audio.mp3` file if it already exists.
 
 #### Extract sub clip audio with custom duration
 
 ```python
 from audio_extract import extract_audio
 
-extract_audio(input_path="./video.mp4", output_path="./audio.mp3", start_time="00:25", duration=15.0)
+extract_audio(input_path="./video.mp4",
+              output_path="./audio.mp3",
+              start_time="00:25",
+              duration=15.0)
 ```
 
 This will convert video file `video.mp4` to a mp3 file starting from `00:25` to `00:40`
@@ -86,7 +93,10 @@ called `audio.mp3` that will have a duration of `00:15`.
 ```python
 from audio_extract import extract_audio
 
-extract_audio(input_path="./audio.mp3", output_path="./new_audio.mp3", start_time="00:05", duration=20.0)
+extract_audio(input_path="./audio.mp3",
+              output_path="./new_audio.mp3",
+              start_time="00:05",
+              duration=20.0)
 ```
 
 This will trim the `audio.mp3` file starting from `00:05` to `00:25` to a `mp3` file called `new_audio.mp3` that will
