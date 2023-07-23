@@ -4,3 +4,7 @@ venv
 dist
 build
 audio_extract.egg-info
+.vscode
+test.py
+**.mp4
+**.mp3

@@ -11,53 +11,86 @@ and video formats, such as MP3, WAV, OGG, MP4, AVI, and MKV.
 
 ## Installing
 
+- Install from Pypi:
+
 ```bash
 pip install audio-extract
 ```
 
-## Executing the program
+- Install from GitHub:
 
-#### Extract full audio
-
-```python
-import audio_extract
-
-audio_extract.run(input_path="./video.mp4", output_path="./audio.mp3")
+```bash
+pip install git+https://github.com/riad-azz/audio-extract.git
 ```
 
-This will create a mp3 file called `audio.mp3` that contains the full audio of the video file `video.mp4`.
+## Getting Started
 
-#### Extract sub clip audio
+### AudioExtract - Info
+
+The application is pretty straightforward all you need is to import the `extract_audio` function. The function args:
+
+* **`input_path`** : The path to the input (Video/Audio) file.
+
+* **`output_path`**: The path to the extracted audio file. The default value is `./audio.mp3`.
+
+* **`output_format`**: The format of the extracted audio. The default value is `mp3`.
+
+* **`start_time`**: The start time of the output in `HH:MM:SS` or `MM:SS` format. The default value is `00:00:00`.
+
+* **`duration`**: The duration of the extracted audio in seconds _(float)_. The default value is  `None` which means
+  full audio will be extracted if `start_time` is set to `00:00:00`.
+
+* **`overwrite`**: Whether to overwrite the output file if it already exists or not. The default value is `False`.
+
+The supported file formats:
+
+- Supported audio formats : `WAV, OGG, MP3, AAC, FLAC, M4A, OGA, OPUS`
+
+- Supported video formats : `MP4, MKV, WEBM, FLV, AVI, MOV, WMV, M4V`
+
+### Executing the program
+
+- Extract full audio:
 
 ```python
-import audio_extract
+from audio_extract import extract_audio
 
-audio_extract.run(input_path="./video.mp4", output_path="./audio.mp3", start_time="00:30")
+extract_audio(input_path="./video.mp4", output_path="./audio.mp3")
 ```
 
-This will create a mp3 file called `audio.mp3` that starts after the first 30 seconds of the video file `video.mp4`.
+This will create a `mp3` file called `audio.mp3` that contains the full audio of the video file `video.mp4`.
 
-#### Extract sub clip audio with custom duration
+- Extract sub clip audio:
 
 ```python
-import audio_extract
+from audio_extract import extract_audio
 
-audio_extract.run(input_path="./video.mp4", output_path="./audio.mp3", start_time="00:25", duration="01:15")
+extract_audio(input_path="./video.mp4", output_path="./audio.mp3", start_time="00:30")
 ```
 
-This will convert video file `video.mp4` to a mp3 file starting from `00:25` to `01:15`
-called `audio.mp3` that will have a duration of `00:50`.
+This will create a `mp3` file called `audio.mp3` that starts after the first 30 seconds of the video file `video.mp4`.
 
-#### Trim audio
+- Extract sub clip audio with custom duration
 
 ```python
-import audio_extract
+from audio_extract import extract_audio
 
-audio_extract.run(input_path="./audio.mp3", output_path="./new_audio.mp3", start_time="00:05", duration="01:15")
+extract_audio(input_path="./video.mp4", output_path="./audio.mp3", start_time="00:25", duration=15.0)
 ```
 
-This will trim the `audio.mp3` file starting from `00:05` to `01:15`  to a mp3 file called `new_audio.mp3` that will
-have a duration of `01:10`.
+This will convert video file `video.mp4` to a mp3 file starting from `00:25` to `00:40`
+called `audio.mp3` that will have a duration of `00:15`.
+
+- Trim audio:
+
+```python
+from audio_extract import extract_audio
+
+extract_audio(input_path="./audio.mp3", output_path="./new_audio.mp3", start_time="00:05", duration=20.0)
+```
+
+This will trim the `audio.mp3` file starting from `00:05` to `00:25` to a `mp3` file called `new_audio.mp3` that will
+have a duration of `00:20`.
 
 ## Running Command-Line-Interface
 
@@ -65,55 +98,31 @@ have a duration of `01:10`.
 
 The following cli arguments are supported:
 
-* **`--input`** or **`-i`**
+* **`--input`** or **`-i`** : The path to the input (Video/Audio) file.
 
-The path to the video/audio input file.
+* **`--output`** or **`-o`** : The path to the extracted audio file. The default value is `./audio.mp3`.
 
-* **`--output`** or **`-o`**
+* **`--format`** or **`-f`** : The format of the extracted audio. The default value is `mp3`.
 
-The path to the mp3 output file. The default value is `./audio.mp3`.
+* **`--start-time`** or **`-st`** : The start time of the output in `HH:MM:SS` or `MM:SS` format. The default value
+  is `00:00:00`.
 
-* **`--start`** or **`-s`**
+* **`--duration`** or **`-d`** : The duration of the extracted audio in seconds _(float)_, The default value is `None`
+  which means full audio will be extracted if `start_time` is set to `00:00:00`.
 
-The start time of the output in `HH:MM:SS` or `MM:SS` format. The default value is `00:00`.
+* **`--overwrite`** or **`-ow`** : Whether to overwrite the output file if it already exists or not. The default value
+  is `False`.
 
-* **`--duration`** or **`-d`**
-
-The duration of the output in `HH:MM:SS` or `MM:SS` format.
-
-### Extract full audio
-
-```bash
-audio-extract --input video.mp4 --output audio.mp3
-```
-
-This command will create a mp3 file called `audio.mp3` that contains the full audio of the video file `video.mp4`.
-
-#### Extract sub clip audio
+- CLI usage example:
 
 ```bash
-audio-extract --input video.mp4 --output audio.mp3 --start 00:00:30
+audio-extract --input="./video.mp4" --output="./audios/extracted_audio.wav" --format="wav" --start-time="00:05" --duration=15.0
 ```
 
-This would create a mp3 file called `audio.mp3` that starts after the first 30 seconds of the video file `video.mp4`.
-
-#### Extract sub clip audio with custom duration
-
-```bash
-audio-extract --input video.mp4 --output audio.mp3 --start '00:25' --duration '01:15'
-```
-
-This command will convert video file `video.mp4` to a mp3 file starting from `00:25` to `01:15`
-called `audio.mp3` that will have a duration of `00:50`.
-
-#### Trim audio
-
-```bash
-audio-extract --input audio.mp3 --output new_audio.mp3 --start '00:05' --duration '01:15'
-```
-
-This command trim the audio starting from `00:05` to `01:15` of the file `audio.mp3` to a mp3 file
-called `new_audio.mp3` that will have a duration of `01:10`.
+This command will extract the audio starting from `00:05` to `00:20` of the file `video.mp4` to a `wav` file
+called `extracted_audio.wav` that will have a duration of `00:15` and will be saved to the folder `./audios/`. The
+folder
+will be automatically created if it doesn't exist.
 
 ## Authors
 

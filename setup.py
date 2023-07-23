@@ -33,11 +33,9 @@ class AddToPathCommand(Command):
 
 
 requires = [
-    "colorama>=0.4.6",
-    "ffmpeg>=1.4",
-    "imageio-ffmpeg>=0.4.8",
-    "mutagen>=1.46.0",
-    "py-file-type>=0.1.0",
+    "ffmpeg-python==0.2.0",
+    "imageio-ffmpeg==0.4.8",
+    "mutagen==1.46.0"
 ]
 
 long_description = open('README.md').read()
@@ -45,7 +43,7 @@ long_description_content_type = 'text/markdown'
 
 setup(
     name='audio_extract',
-    version='0.3.2',
+    version='0.4.0',
     author='riad-azz',
     author_email='riadh.azzoun@hotmail.com',
     description='Extract and trim audio from videos or trim audios.',
