@@ -51,9 +51,9 @@ class AudioExtractValidator:
             output_path += "audio." + self.output_format
 
         output_path = os.path.abspath(output_path)
-        output_parts = output_path.split('\\')
+        output_parts = output_path.split(os.sep)
         filename = output_parts[-1]
-        folder_path = "\\".join(output_parts[:-1])
+        folder_path = f"{os.sep}".join(output_parts[:-1])
 
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
