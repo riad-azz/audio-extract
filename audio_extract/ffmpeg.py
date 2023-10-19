@@ -31,7 +31,7 @@ def extract_audio(input_path: str, output_path: str = "./audio.mp3", output_form
         command.insert(3, "-t")
         command.insert(4, cleaned_duration)
 
-    result = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if result.returncode == 0:
         print(f"Success : audio file has been saved to \"{cleaned_output_path}\".")
     else:
