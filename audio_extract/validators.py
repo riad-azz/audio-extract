@@ -76,6 +76,9 @@ class AudioExtractValidator:
     def _validate_start_time(self):
         start_time = self.start_time
 
+        if start_time == "00:00:00":
+            return
+
         pattern = r"^(?:(\d{1,2}):)?(\d{1,2}):(\d{1,2})$"
         if not re.match(pattern, start_time):
             raise Exception("Invalid time format. Must be in HH:MM:SS or MM:SS format.")
