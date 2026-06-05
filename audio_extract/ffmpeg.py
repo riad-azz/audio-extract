@@ -11,7 +11,8 @@ FFMPEG_BINARY = imageio_ffmpeg.get_ffmpeg_exe()
 def extract_audio(input_path: str, output_path: str = "./audio.mp3", output_format: str = "mp3",
                   start_time: str = "00:00:00",
                   duration: float = None,
-                  overwrite: bool = False):
+                  overwrite: bool = False,
+                  log_message: bool = False):
     validator = AudioExtractValidator(input_path, output_path, output_format, duration, start_time, overwrite)
     result = validator.validate()
 
@@ -33,7 +34,8 @@ def extract_audio(input_path: str, output_path: str = "./audio.mp3", output_form
 
     result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if result.returncode == 0:
-        print(f"Success : audio file has been saved to \"{cleaned_output_path}\".")
+        if log_message:
+            print(f"Success : audio file has been saved to \"{cleaned_output_path}\".")
     else:
         error = result.stderr.decode().strip().split("\n")[-1]
         raise Exception(f"Failed : {error}.")

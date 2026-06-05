@@ -42,6 +42,8 @@ The application is pretty straightforward all you need is to import the `extract
 
 * **`overwrite`**: Whether to overwrite the output file if it already exists or not. The default value is `False`.
 
+* **`log_message`**: Whether to write a log message to the terminal or not. The default value is `False`.
+
 The supported file formats:
 
 - Supported audio formats : `WAV, OGG, MP3, AAC, FLAC, M4A, OGA, OPUS`
@@ -122,6 +124,8 @@ The following cli arguments are supported:
 
 * **`--overwrite`** or **`-ow`** : Whether to overwrite the output file if it already exists or not. The default value
   is `False`.
+  
+* **`--log`** or **`-l`** : Whether to write a log message to the terminal or not. The default value is `False`.
 
 ### CLI Usage Example:
 

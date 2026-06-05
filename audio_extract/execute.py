@@ -24,6 +24,9 @@ def main():
     parser.add_argument('--duration', '-d',
                         help='The duration of the extracted audio in seconds.', type=float, default=None)
     parser.add_argument('--overwrite', '-ow', help='Overwrite the output file if it exists.', type=bool, default=False)
+    parser.add_argument('--log', '-l',
+                        help='Write a log message to the terminal.',
+                        default=False, type=bool)
     # Parse the arguments
     args = parser.parse_args()
     input_path = args.input
@@ -32,10 +35,12 @@ def main():
     start_time = args.start_time
     duration = args.duration
     overwrite = args.overwrite
+    log_message = args.log
 
     extract_audio(input_path=input_path, output_path=output_path, output_format=output_format, start_time=start_time,
                   duration=duration,
-                  overwrite=overwrite)
+                  overwrite=overwrite,
+                  log_message=log_message)
 
 
 if __name__ == '__main__':
