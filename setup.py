@@ -33,9 +33,9 @@ class AddToPathCommand(Command):
 
 
 requires = [
-    "ffmpeg-python==0.2.0",
-    "imageio-ffmpeg==0.4.8",
-    "mutagen==1.46.0"
+    "ffmpeg-python>=0.2.0",
+    "imageio-ffmpeg>=0.4.8",
+    "mutagen>=1.46.0"
 ]
 
 long_description = open('README.md').read()
